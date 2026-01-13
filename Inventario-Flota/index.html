@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventario Maquinaria | Mercoguadiana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://mercoguadiana.es/wp-content/uploads/2022/03/cropped-favicon-512-mercoguadiana-32x32.jpg" sizes="32x32">
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- HEADER -->
+    <header class="bg-green-700 text-white shadow-md">
+      <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <img
+          src="img/logo-mercoguadiana-grupo-white.png"
+          alt="Mercoguadiana Grupo"
+          class="h-10"
+        />
+        <span class="text-sm font-semibold uppercase tracking-wide">
+          Inventario Maquinaria
+        </span>
+      </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-6">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- TÍTULO -->
+        <div class="bg-green-50 border-b border-green-200 px-6 py-4">
+          <h1 class="text-xl font-bold text-green-800">
+            Ficha del equipo
+          </h1>
+          <p class="text-sm text-green-700">
+            Información del activo registrado
+          </p>
+        </div>
+
+        <!-- DATOS -->
+        <div class="p-6">
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+            <div>
+              <dt class="text-gray-500">Código</dt>
+              <dd class="font-semibold text-gray-900" id="codigo"></dd>
+            </div>
+
+            <div>
+              <dt class="text-gray-500">Categoría</dt>
+              <dd class="font-semibold text-gray-900" id="categoria"></dd>
+            </div>
+
+            <div>
+              <dt class="text-gray-500">Marca</dt>
+              <dd class="font-semibold text-gray-900" id="marca"></dd>
+            </div>
+
+            <div>
+              <dt class="text-gray-500">Modelo</dt>
+              <dd class="font-semibold text-gray-900" id="modelo"></dd>
+            </div>
+
+            <div>
+              <dt class="text-gray-500">Año</dt>
+              <dd class="font-semibold text-gray-900" id="anio"></dd>
+            </div>
+
+            <div>
+              <dt class="text-gray-500">Delegación</dt>
+              <dd class="font-semibold text-gray-900" id="delegacion"></dd>
+            </div>
+
+            <div class="sm:col-span-2">
+              <dt class="text-gray-500">Empresa</dt>
+              <dd class="font-semibold text-gray-900" id="empresa"></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-gray-300 text-sm">
+      <div
+        class="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2"
+      >
+        <span>© Mercoguadiana Grupo</span>
+        <a
+          href="https://www.mercoguadiana.es"
+          target="_blank"
+          class="text-green-400 hover:text-green-300 font-medium"
+        >
+          Visitar mercoguadiana.es
+        </a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
