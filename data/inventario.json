@@ -180,5 +180,83 @@
     "delegacion": "PUEBLA F. SEMOLA",
     "usuario": "GENERAL",
     "empresa": "MERCOGRAIN"
+  },
+  {
+    "codigo": "021-30-05-848",
+    "familia": "MAQUINARIA",
+    "categoria": "PRENSA",
+    "marca": "MEGA",
+    "modelo": "500TN",
+    "matricula_imei": "",
+    "bastidor": "2406258736",
+    "anio": "2024",
+    "delegacion": "PUEBLA F. SEMOLA",
+    "usuario": "TALLER",
+    "empresa": "MERCOGRAIN"
+  },
+  {
+    "codigo": "021-30-26-849",
+    "familia": "MAQUINARIA",
+    "categoria": "ELECTRICA DE HILO",
+    "marca": "NIPPON GASES",
+    "modelo": "",
+    "matricula_imei": "",
+    "bastidor": "2213006",
+    "anio": "2018",
+    "delegacion": "PUEBLA F. SEMOLA",
+    "usuario": "TALLER",
+    "empresa": "MERCOGRAIN"
+  },
+  {
+    "codigo": "021-30-13-850",
+    "familia": "MAQUINARIA",
+    "categoria": "SIERRA DE CINTA",
+    "marca": "BELEX",
+    "modelo": "BF180-SM",
+    "matricula_imei": "",
+    "bastidor": "20210166",
+    "anio": "2021",
+    "delegacion": "PUEBLA F. SEMOLA",
+    "usuario": "TALLER",
+    "empresa": "MERCOGRAIN"
+  },
+  {
+    "codigo": "021-30-14-851",
+    "familia": "MAQUINARIA",
+    "categoria": "TALADRO VERTICAL",
+    "marca": "CEVIC",
+    "modelo": "CP12-953",
+    "matricula_imei": "",
+    "bastidor": "",
+    "anio": "",
+    "delegacion": "PUEBLA F. SEMOLA",
+    "usuario": "TALLER",
+    "empresa": "MERCOGRAIN"
+  },
+  {
+    "codigo": "103-30-03-886",
+    "familia": "MAQUINARIA",
+    "categoria": "TRANSPALETTA",
+    "marca": "PLUS POWER",
+    "modelo": "ES15 ES",
+    "matricula_imei": "",
+    "bastidor": "5423050879",
+    "anio": "2023",
+    "delegacion": "MONTEJO AGRICENTRO",
+    "usuario": "AGRICENTRO",
+    "empresa": "MERCOGUADIANA"
+  },
+  {
+    "codigo": "013-30-02-887",
+    "familia": "MAQUINARIA",
+    "categoria": "CARRETILLA",
+    "marca": "TOYOTA",
+    "modelo": "027FD25",
+    "matricula_imei": "",
+    "bastidor": "7FD25 41000",
+    "anio": "",
+    "delegacion": "CASTUERA",
+    "usuario": "AGRICENTRO",
+    "empresa": "MERCOGUADIANA"
   }
 ]
