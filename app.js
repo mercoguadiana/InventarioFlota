@@ -10,7 +10,7 @@ fetch("data/inventario.json")
     );
 
     if (!producto) {
-      document.body.innerHTML = "<h2>Equipo no encontrado</h2>";
+      window.location.href = "error.html";
       return;
     }
 

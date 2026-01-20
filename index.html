@@ -28,75 +28,113 @@
     </header>
 
     <!-- CONTENIDO -->
-    <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-6">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <!-- TÍTULO -->
-        <div class="bg-green-50 border-b border-green-200 px-6 py-4">
-          <h1 class="text-xl font-bold text-green-800">
-            Ficha del equipo
-          </h1>
-          <p class="text-sm text-green-700">
-            Información del activo registrado
-          </p>
-        </div>
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8">
+  <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+    <!-- Título -->
+    <div class="bg-green-600 px-6 py-4 text-white">
+      <h1 class="text-2xl font-bold">Ficha del equipo</h1>
+      <p class="text-green-100 mt-1">Información detallada del activo registrado</p>
+    </div>
 
-        <!-- DATOS -->
-        <div class="p-6">
-          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
-            <div>
-              <dt class="text-gray-500">Código</dt>
-              <dd class="font-semibold text-gray-900" id="codigo"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Familia</dt>
-              <dd class="font-semibold text-gray-900" id="familia"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Categoría</dt>
-              <dd class="font-semibold text-gray-900" id="categoria"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Marca</dt>
-              <dd class="font-semibold text-gray-900" id="marca"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Modelo</dt>
-              <dd class="font-semibold text-gray-900" id="modelo"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Año</dt>
-              <dd class="font-semibold text-gray-900" id="anio"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Número de serie</dt>
-              <dd class="font-semibold text-gray-900" id="numero_serie"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Delegación</dt>
-              <dd class="font-semibold text-gray-900" id="delegacion"></dd>
-            </div>
-
-            <div>
-              <dt class="text-gray-500">Usuario</dt>
-              <dd class="font-semibold text-gray-900" id="usuario"></dd>
-            </div>
-
-            <div class="sm:col-span-2">
-              <dt class="text-gray-500">Empresa</dt>
-              <dd class="font-semibold text-gray-900" id="empresa"></dd>
-            </div>
-          </dl>
-        </div>
+    <!-- Datos -->
+    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Código</span>
+        <span class="font-semibold text-gray-900 text-lg" id="codigo"></span>
       </div>
-    </main>
 
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Familia</span>
+        <span class="font-semibold text-gray-900 text-lg" id="familia"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Categoría</span>
+        <span class="font-semibold text-gray-900 text-lg" id="categoria"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Marca</span>
+        <span class="font-semibold text-gray-900 text-lg" id="marca"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Modelo</span>
+        <span class="font-semibold text-gray-900 text-lg" id="modelo"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Año</span>
+        <span class="font-semibold text-gray-900 text-lg" id="anio"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Número de serie</span>
+        <span class="font-semibold text-gray-900 text-lg" id="numero_serie"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Delegación</span>
+        <span class="font-semibold text-gray-900 text-lg" id="delegacion"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
+        <span class="text-gray-500 text-sm">Usuario</span>
+        <span class="font-semibold text-gray-900 text-lg" id="usuario"></span>
+      </div>
+
+      <div class="bg-green-50 p-4 rounded-lg shadow col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col">
+        <span class="text-gray-500 text-sm">Empresa</span>
+        <span class="font-semibold text-gray-900 text-lg" id="empresa"></span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+    fetch("data/inventario.json")
+      .then(res => res.json())
+      .then(productos => {
+        const inventarioBody = document.getElementById("inventarioBody");
+        const filterDelegacion = document.getElementById("filterDelegacion");
+
+        // Rellenar select de delegaciones
+        const delegaciones = [...new Set(productos.map(p => p["DELEG.UBICACIÓN"]))].sort();
+        delegaciones.forEach(d => {
+          const option = document.createElement("option");
+          option.value = d;
+          option.textContent = d;
+          filterDelegacion.appendChild(option);
+        });
+
+        function renderTable(filter = "") {
+          inventarioBody.innerHTML = "";
+          const filtered = filter ? productos.filter(p => p["DELEG.UBICACIÓN"] === filter) : productos;
+          filtered.forEach(p => {
+            const tr = document.createElement("tr");
+            tr.className = "border-b hover:bg-green-50 cursor-pointer";
+            tr.innerHTML = `
+              <td class="px-4 py-2">${p["CÓDIGO"]}</td>
+              <td class="px-4 py-2">${p["FAMILIA"]}</td>
+              <td class="px-4 py-2">${p["CATEGORÍA"]}</td>
+              <td class="px-4 py-2">${p["MARCA"]}</td>
+              <td class="px-4 py-2">${p["DELEG.UBICACIÓN"]}</td>
+              <td class="px-4 py-2">
+                <a href="ficha.html?codigo=${p["CÓDIGO"]}" class="text-green-600 hover:underline">Ver</a>
+              </td>
+            `;
+            inventarioBody.appendChild(tr);
+          });
+        }
+
+        renderTable();
+
+        filterDelegacion.addEventListener("change", () => {
+          renderTable(filterDelegacion.value);
+        });
+      })
+      .catch(err => console.error("Error cargando inventario", err));
+  </script>
     <!-- FOOTER -->
     <footer class="bg-gray-800 text-gray-300 text-sm">
       <div
