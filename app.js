@@ -4,18 +4,45 @@ const codigo = params.get("codigo");
 fetch("data/inventario.json")
   .then(res => res.json())
   .then(productos => {
-    const producto = productos.find(p => p.codigo === codigo);
+
+    const producto = productos.find(
+      p => p["CÓDIGO"] === codigo
+    );
 
     if (!producto) {
       document.body.innerHTML = "<h2>Equipo no encontrado</h2>";
       return;
     }
 
-    document.getElementById("codigo").textContent = producto.codigo;
-    document.getElementById("categoria").textContent = producto.categoria;
-    document.getElementById("marca").textContent = producto.marca || "-";
-    document.getElementById("modelo").textContent = producto.modelo || "-";
-    document.getElementById("anio").textContent = producto.anio || "-";
-    document.getElementById("delegacion").textContent = producto.delegacion;
-    document.getElementById("empresa").textContent = producto.empresa;
+    function setField(id, value) {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      if (
+        value === "0" ||
+        value === "-" ||
+        value === "" ||
+        value === null ||
+        value === undefined
+      ) {
+        el.closest("div").style.display = "none";
+      } else {
+        el.textContent = value;
+      }
+    }
+
+    setField("codigo", producto["CÓDIGO"]);
+    setField("familia", producto["FAMILIA"]);
+    setField("categoria", producto["CATEGORÍA"]);
+    setField("marca", producto["MARCA"]);
+    setField("modelo", producto["MODELO"]);
+    setField("anio", producto["AÑO"]);
+    setField("numero_serie", producto["N/S - BASTIDOR"]);
+    setField("delegacion", producto["DELEG.UBICACIÓN"]);
+    setField("usuario", producto["USUARIO"]);
+    setField("empresa", producto["EMPRESA"]);
+  })
+  .catch(err => {
+    console.error(err);
+    document.body.innerHTML = "<h2>Error cargando el inventario</h2>";
   });
