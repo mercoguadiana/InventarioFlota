@@ -15,7 +15,7 @@
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <!-- HEADER -->
     <header class="bg-green-700 text-white shadow-md">
-      <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
         <img
           src="img/logo-mercoguadiana-grupo-white.png"
           alt="Mercoguadiana Grupo"
@@ -28,118 +28,116 @@
     </header>
 
     <!-- CONTENIDO -->
-    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8">
-  <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-    <!-- Título -->
-    <div class="bg-green-600 px-6 py-4 text-white">
-      <h1 class="text-2xl font-bold">Ficha del equipo</h1>
-      <p class="text-green-100 mt-1">Información detallada del activo registrado</p>
-    </div>
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
 
-    <!-- Datos -->
-    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Código</span>
-        <span class="font-semibold text-gray-900 text-lg" id="codigo"></span>
-      </div>
+      <!-- PANTALLA FILTRO -->
+      <section id="pantallaFiltro" class="hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <h1 class="text-2xl font-bold text-gray-800 mb-2 text-center">
+            Inventario de maquinaria
+          </h1>
+          <p class="text-gray-600 mb-6 text-center">
+            Selecciona una delegación para consultar los equipos
+          </p>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Familia</span>
-        <span class="font-semibold text-gray-900 text-lg" id="familia"></span>
-      </div>
+          <div class="max-w-sm mx-auto mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Delegación
+            </label>
+            <select
+              id="filterDelegacion"
+              class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
+            >
+              <option value="">Todas las delegaciones</option>
+            </select>
+          </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Categoría</span>
-        <span class="font-semibold text-gray-900 text-lg" id="categoria"></span>
-      </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left">
+              <thead class="bg-green-600 text-white">
+                <tr>
+                  <th class="px-4 py-2">Código</th>
+                  <th class="px-4 py-2">Familia</th>
+                  <th class="px-4 py-2">Categoría</th>
+                  <th class="px-4 py-2">Marca</th>
+                  <th class="px-4 py-2">Delegación</th>
+                  <th class="px-4 py-2"></th>
+                </tr>
+              </thead>
+              <tbody id="inventarioBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Marca</span>
-        <span class="font-semibold text-gray-900 text-lg" id="marca"></span>
-      </div>
+      <!-- PANTALLA FICHA -->
+      <section id="pantallaFicha" class="hidden">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="bg-green-600 px-6 py-4 text-white">
+            <h1 class="text-2xl font-bold">Ficha del equipo</h1>
+            <p class="text-green-100 mt-1">
+              Información detallada del activo registrado
+            </p>
+          </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Modelo</span>
-        <span class="font-semibold text-gray-900 text-lg" id="modelo"></span>
-      </div>
+          <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Código</span>
+              <span class="block font-semibold text-lg" id="codigo"></span>
+            </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Año</span>
-        <span class="font-semibold text-gray-900 text-lg" id="anio"></span>
-      </div>
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Familia</span>
+              <span class="block font-semibold text-lg" id="familia"></span>
+            </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Número de serie</span>
-        <span class="font-semibold text-gray-900 text-lg" id="numero_serie"></span>
-      </div>
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Categoría</span>
+              <span class="block font-semibold text-lg" id="categoria"></span>
+            </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Delegación</span>
-        <span class="font-semibold text-gray-900 text-lg" id="delegacion"></span>
-      </div>
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Marca</span>
+              <span class="block font-semibold text-lg" id="marca"></span>
+            </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow flex flex-col">
-        <span class="text-gray-500 text-sm">Usuario</span>
-        <span class="font-semibold text-gray-900 text-lg" id="usuario"></span>
-      </div>
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Modelo</span>
+              <span class="block font-semibold text-lg" id="modelo"></span>
+            </div>
 
-      <div class="bg-green-50 p-4 rounded-lg shadow col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col">
-        <span class="text-gray-500 text-sm">Empresa</span>
-        <span class="font-semibold text-gray-900 text-lg" id="empresa"></span>
-      </div>
-    </div>
-  </div>
-</main>
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Año</span>
+              <span class="block font-semibold text-lg" id="anio"></span>
+            </div>
 
-<script>
-    fetch("data/inventario.json")
-      .then(res => res.json())
-      .then(productos => {
-        const inventarioBody = document.getElementById("inventarioBody");
-        const filterDelegacion = document.getElementById("filterDelegacion");
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Número de serie</span>
+              <span class="block font-semibold text-lg" id="numero_serie"></span>
+            </div>
 
-        // Rellenar select de delegaciones
-        const delegaciones = [...new Set(productos.map(p => p["DELEG.UBICACIÓN"]))].sort();
-        delegaciones.forEach(d => {
-          const option = document.createElement("option");
-          option.value = d;
-          option.textContent = d;
-          filterDelegacion.appendChild(option);
-        });
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Delegación</span>
+              <span class="block font-semibold text-lg" id="delegacion"></span>
+            </div>
 
-        function renderTable(filter = "") {
-          inventarioBody.innerHTML = "";
-          const filtered = filter ? productos.filter(p => p["DELEG.UBICACIÓN"] === filter) : productos;
-          filtered.forEach(p => {
-            const tr = document.createElement("tr");
-            tr.className = "border-b hover:bg-green-50 cursor-pointer";
-            tr.innerHTML = `
-              <td class="px-4 py-2">${p["CÓDIGO"]}</td>
-              <td class="px-4 py-2">${p["FAMILIA"]}</td>
-              <td class="px-4 py-2">${p["CATEGORÍA"]}</td>
-              <td class="px-4 py-2">${p["MARCA"]}</td>
-              <td class="px-4 py-2">${p["DELEG.UBICACIÓN"]}</td>
-              <td class="px-4 py-2">
-                <a href="ficha.html?codigo=${p["CÓDIGO"]}" class="text-green-600 hover:underline">Ver</a>
-              </td>
-            `;
-            inventarioBody.appendChild(tr);
-          });
-        }
+            <div class="bg-green-50 p-4 rounded-lg shadow">
+              <span class="text-gray-500 text-sm">Usuario</span>
+              <span class="block font-semibold text-lg" id="usuario"></span>
+            </div>
 
-        renderTable();
+            <div class="bg-green-50 p-4 rounded-lg shadow col-span-1 sm:col-span-2 lg:col-span-3">
+              <span class="text-gray-500 text-sm">Empresa</span>
+              <span class="block font-semibold text-lg" id="empresa"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        filterDelegacion.addEventListener("change", () => {
-          renderTable(filterDelegacion.value);
-        });
-      })
-      .catch(err => console.error("Error cargando inventario", err));
-  </script>
     <!-- FOOTER -->
     <footer class="bg-gray-800 text-gray-300 text-sm">
-      <div
-        class="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2"
-      >
+      <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span>© Mercoguadiana Grupo</span>
         <a
           href="https://www.mercoguadiana.es"
@@ -151,6 +149,84 @@
       </div>
     </footer>
 
-    <script src="app.js"></script>
+    <!-- SCRIPT -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const codigoSeleccionado = params.get("codigo");
+
+      const pantallaFiltro = document.getElementById("pantallaFiltro");
+      const pantallaFicha = document.getElementById("pantallaFicha");
+
+      fetch("data/inventario.json")
+        .then(res => res.json())
+        .then(productos => {
+
+          if (!codigoSeleccionado) {
+            pantallaFiltro.classList.remove("hidden");
+            pantallaFicha.classList.add("hidden");
+
+            const inventarioBody = document.getElementById("inventarioBody");
+            const filterDelegacion = document.getElementById("filterDelegacion");
+
+            const delegaciones = [...new Set(productos.map(p => p["DELEG.UBICACIÓN"]))].sort();
+            delegaciones.forEach(d => {
+              const option = document.createElement("option");
+              option.value = d;
+              option.textContent = d;
+              filterDelegacion.appendChild(option);
+            });
+
+            function renderTable(filter = "") {
+              inventarioBody.innerHTML = "";
+              const filtered = filter
+                ? productos.filter(p => p["DELEG.UBICACIÓN"] === filter)
+                : productos;
+
+              filtered.forEach(p => {
+                const tr = document.createElement("tr");
+                tr.className = "border-b hover:bg-green-50";
+                tr.innerHTML = `
+                  <td class="px-4 py-2">${p["CÓDIGO"]}</td>
+                  <td class="px-4 py-2">${p["FAMILIA"]}</td>
+                  <td class="px-4 py-2">${p["CATEGORÍA"]}</td>
+                  <td class="px-4 py-2">${p["MARCA"]}</td>
+                  <td class="px-4 py-2">${p["DELEG.UBICACIÓN"]}</td>
+                  <td class="px-4 py-2">
+                    <a href="?codigo=${p["CÓDIGO"]}" class="text-green-600 hover:underline">
+                      Ver ficha
+                    </a>
+                  </td>
+                `;
+                inventarioBody.appendChild(tr);
+              });
+            }
+
+            renderTable();
+            filterDelegacion.addEventListener("change", () => {
+              renderTable(filterDelegacion.value);
+            });
+
+            return;
+          }
+
+          pantallaFiltro.classList.add("hidden");
+          pantallaFicha.classList.remove("hidden");
+
+          const equipo = productos.find(p => p["CÓDIGO"] === codigoSeleccionado);
+          if (!equipo) return;
+
+          document.getElementById("codigo").textContent = equipo["CÓDIGO"];
+          document.getElementById("familia").textContent = equipo["FAMILIA"];
+          document.getElementById("categoria").textContent = equipo["CATEGORÍA"];
+          document.getElementById("marca").textContent = equipo["MARCA"];
+          document.getElementById("modelo").textContent = equipo["MODELO"];
+          document.getElementById("anio").textContent = equipo["AÑO"];
+          document.getElementById("numero_serie").textContent = equipo["Nº SERIE"];
+          document.getElementById("delegacion").textContent = equipo["DELEG.UBICACIÓN"];
+          document.getElementById("usuario").textContent = equipo["USUARIO"];
+          document.getElementById("empresa").textContent = equipo["EMPRESA"];
+        })
+        .catch(err => console.error("Error cargando inventario", err));
+    </script>
   </body>
 </html>
